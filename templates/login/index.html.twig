@@ -3,6 +3,11 @@
 {% block title %}Login{% endblock %}
 
 {% block body %}
+    <style>
+        body{
+            text-align: center;
+        }
+    </style>
     {% if error %}
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
