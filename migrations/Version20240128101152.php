@@ -20,9 +20,16 @@ final class Version20240128101152 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('DROP SEQUENCE auth_id_seq CASCADE');
-        $this->addSql('DROP TABLE auth');
-        $this->addSql('ALTER TABLE "user" ADD phone VARCHAR(255) DEFAULT NULL');
+        if ($schema->hasTable('auth')) {
+            $this->addSql('DROP SEQUENCE auth_id_seq CASCADE');
+            $this->addSql('DROP TABLE auth');
+        }
+
+        $columnExists = $schema->getTable('user')->hasColumn('phone');
+
+        if (!$columnExists) {
+            $this->addSql('ALTER TABLE "user" ADD phone VARCHAR(255) DEFAULT NULL');
+        }
     }
 
     public function down(Schema $schema): void
@@ -31,6 +38,11 @@ final class Version20240128101152 extends AbstractMigration
         $this->addSql('CREATE SCHEMA public');
         $this->addSql('CREATE SEQUENCE auth_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE TABLE auth (id INT NOT NULL, name VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, phone_number INT NOT NULL, password VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
-        $this->addSql('ALTER TABLE "user" DROP phone');
+
+        $columnExists = $schema->getTable('user')->hasColumn('phone');
+
+        if ($columnExists) {
+            $this->addSql('ALTER TABLE "user" DROP phone');
+        }
     }
 }
