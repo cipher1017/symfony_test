@@ -21,6 +21,12 @@ class Category
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Blogs::class)]
     private Collection $blogs;
 
+    #[ORM\Column(length: 255)]
+    private ?string $feed_url = null;
+
+    #[ORM\Column]
+    private ?\DateTimeImmutable $feed_last_updated_at = null;
+
     public function __construct()
     {
         $this->blogs = new ArrayCollection();
@@ -69,6 +75,30 @@ class Category
                 $blog->setCategory(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getFeedUrl(): ?string
+    {
+        return $this->feed_url;
+    }
+
+    public function setFeedUrl(string $feed_url): static
+    {
+        $this->feed_url = $feed_url;
+
+        return $this;
+    }
+
+    public function getFeedLastUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->feed_last_updated_at;
+    }
+
+    public function setFeedLastUpdatedAt(\DateTimeImmutable $feed_last_updated_at): static
+    {
+        $this->feed_last_updated_at = $feed_last_updated_at;
 
         return $this;
     }
