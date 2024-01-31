@@ -1,19 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello WeatherController!{% endblock %}
+{% block title %}Check Weather{% endblock %}
+
 
 {% block body %}
-    <h1>Weather Information</h1>
+    <style>
+        .home_layout {
+            text-align: center;
+            background: #333;
+            color: #fff;
+            width: 100%;
+            max-width: 500px;
+            border-radius: 12px;
+            box-shadow: -3px 3px 10px -5px rgba(0, 0, 0, 0);
+            padding: 40px;
+            margin: auto;
+            margin-top: 10vh;
+        }
+    </style>
+    <div class="home_layout">
+        <h1>Weather Information</h1>
 
-    <form method="get" action="{{ path('app_weather') }}">
-        <label for="location">Enter Location:</label>
-        <input type="text" id="location" name="location" value="{{ app.request.query.get('location') }}" required>
-        <button type="submit">Get Weather</button>
-    </form>
+        <form method="get" action="{{ path('app_weather') }}">
+            <label for="location">Enter Location:</label>
+            <input type="text" id="location" name="location" value="{{ app.request.query.get('location') }}" required>
+            <button type="submit">Get Weather</button>
+        </form>
 
-    {% if weather %}
-        <p>Temperature: {{ weather.main.temp }} &deg;C</p>
-        <p>Weather: {{ weather.weather[0].description }}</p>
-    {% endif %}
+        {% if weather %}
+            <p>Temperature: {{ weather.main.temp }} &deg;C</p>
+            <p>Weather: {{ weather.weather[0].description }}</p>
+        {% endif %}
+    </div>
 
 {% endblock %}
