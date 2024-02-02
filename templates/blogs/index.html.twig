@@ -4,19 +4,40 @@
 
 {% block body %}
     <style>
-        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+        .example-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 1em auto;
+            width: 95%;
+            font: 18px/1.5 sans-serif;
+        }
+
+        .card {
+            width: calc(33.33% - 10px);
+            margin-bottom: 20px;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+        }
     </style>
 
     <div class="example-wrapper">
         {% for item in rss.channel.item %}
-            <a href="{{ item.link|default('') }}">
-                <div>
-                    <p>{{ item.title }}</p>
-                    <p>{{ item.pubDate|date("M, d Y") }}</p>
-                    <p>{{ item.description|default('')|raw }}</p>
+            <div class="card">
+                {% if item.media.thumbnail is defined %}
+                    <img src="{{ item.media.thumbnail['@url'] }}" class="card-img-top" alt="{{ item.title|raw }}">
+                {% endif %}
+                <div class="card-body">
+                    <a href="{{ item.link|default('') }}">
+                        <h5 class="card-title">{{ item.title|raw }}</h5>
+                    </a>
+                    <p class="card-text">{{ item.pubDate|date("M, d Y") }}</p>
+                    <p class="card-text">{{ item.description|default('')|raw }}</p>
                 </div>
-            </a>
+            </div>
         {% endfor %}
     </div>
 {% endblock %}

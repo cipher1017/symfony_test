@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Controller;
-
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,6 +13,7 @@ class BlogsController extends AbstractController
     {
         $rssFileNews = 'https://feeds.bbci.co.uk/sport/football/rss.xml';
         $rss = simplexml_load_file($rssFileNews);
+
         return $this->render('blogs/index.html.twig', [
             'rss' => $rss,
         ]);
