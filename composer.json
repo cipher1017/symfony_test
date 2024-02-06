@@ -7,10 +7,12 @@
         "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "ext-simplexml": "*",
         "doctrine/doctrine-bundle": "^2.11",
         "doctrine/doctrine-migrations-bundle": "^3.3",
         "doctrine/orm": "^2.17",
         "guzzlehttp/guzzle": "^7.8",
+        "stof/doctrine-extensions-bundle": "^1.10",
         "symfony/console": "7.0.*",
         "symfony/dotenv": "7.0.*",
         "symfony/flex": "^2",
@@ -24,10 +26,8 @@
         "symfony/yaml": "7.0.*",
         "symfonycasts/verify-email-bundle": "^1.16",
         "twig/extra-bundle": "^2.12|^3.0",
-        "twig/twig": "^2.12|^3.0",
-        "williamwilbert/feed-io": "*",
         "twig/markdown-extra": "^2.14",
-        "ext-simplexml": "*"
+        "twig/twig": "^2.12|^3.0"
     },
     "config": {
         "allow-plugins": {
@@ -79,7 +79,7 @@
         }
     },
     "require-dev": {
-        "symfony/maker-bundle": "^1.52",
+        "symfony/maker-bundle": "^1.53",
         "symfony/stopwatch": "7.0.*",
         "symfony/web-profiler-bundle": "7.0.*"
     }
