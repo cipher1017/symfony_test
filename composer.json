@@ -26,8 +26,8 @@
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0",
         "williamwilbert/feed-io": "*",
-        "twig/markdown-extra": "^2.14"
-
+        "twig/markdown-extra": "^2.14",
+        "ext-simplexml": "*"
     },
     "config": {
         "allow-plugins": {
