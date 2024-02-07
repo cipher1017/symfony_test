@@ -1,19 +1,57 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Category index{% endblock %}
+{% block title %}Home Categories{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .table th,
+        .table td {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+            text-align: left;
+        }
+        .table th {
+            background-color: #f8f9fa;
+        }
+        .actions a {
+            margin-right: 10px;
+        }
+        .no-records {
+            font-style: italic;
+            color: #999;
+        }
+        .create-new {
+            display: flex;
+            margin-top: 20px;
+        }
+    </style>
+{% endblock %}
 
 {% block body %}
     <h1>Categories</h1>
 
     <table class="table">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Feed_url</th>
-                <th>Feed_last_updated_at</th>
-                <th>actions</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Feed URL</th>
+            <th>Last Updated</th>
+            <th>Actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for category in categories %}
@@ -22,18 +60,18 @@
                 <td>{{ category.name }}</td>
                 <td>{{ category.feedUrl }}</td>
                 <td>{{ category.feedLastUpdatedAt ? category.feedLastUpdatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_category_show', {'id': category.id}) }}">show</a>
-                    <a href="{{ path('app_category_edit', {'id': category.id}) }}">edit</a>
+                <td class="actions">
+                    <a href="{{ path('app_category_show', {'id': category.id}) }}" class="btn btn-primary">Show</a>
+                    <a href="{{ path('app_category_edit', {'id': category.id}) }}" class="btn btn-secondary">Edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5" class="no-records">No records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_category_new') }}">Create new</a>
+    <a href="{{ path('app_category_new') }}" class="create-new btn btn-success">Create New</a>
 {% endblock %}
