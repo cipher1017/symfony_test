@@ -12,66 +12,51 @@
         h1 {
             margin-bottom: 20px;
         }
-        .table {
+        .body-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 1em auto;
             width: 100%;
-            border-collapse: collapse;
+            font: 18px/1.5 sans-serif;
+        }
+
+        .card {
+            width: calc(33.33% - 10px);
             margin-bottom: 20px;
-        }
-        .table th,
-        .table td {
-            border: 1px solid #dee2e6;
-            padding: 8px;
-            text-align: left;
-        }
-        .table th {
-            background-color: #f8f9fa;
-        }
-        .actions a {
-            margin-right: 10px;
-        }
-        .no-records {
-            font-style: italic;
-            color: #999;
         }
         .create-new {
             display: flex;
             margin-top: 20px;
+            border-radius: 8px;
+            border: 1px solid #00b3ff;
+            width: 100px;
         }
     </style>
 {% endblock %}
 
 {% block body %}
     <h1>Categories</h1>
-
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Feed URL</th>
-            <th>Last Updated</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for category in categories %}
-            <tr>
-                <td>{{ category.id }}</td>
-                <td>{{ category.name }}</td>
-                <td>{{ category.feedUrl }}</td>
-                <td>{{ category.feedLastUpdatedAt ? category.feedLastUpdatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td class="actions">
-                    <a href="{{ path('app_category_show', {'id': category.id}) }}" class="btn btn-primary">Show</a>
-                    <a href="{{ path('app_category_edit', {'id': category.id}) }}" class="btn btn-secondary">Edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5" class="no-records">No records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
     <a href="{{ path('app_category_new') }}" class="create-new btn btn-success">Create New</a>
+
+    {% if categories %}
+        {% for category in categories %}
+            <div class="body-wrapper">
+                <div class="card">
+                    <div class="card-body">
+                        <p>{{ category.name }}</p>
+                        <p>{{ category.feedLastUpdatedAt ? category.feedLastUpdatedAt|date('Y-m-d H:i:s') : '' }}</p>
+                        <div class="actions">
+                            <a href="{{ path('app_category_show', {'id': category.id}) }}" class="btn btn-primary">View</a>
+                            <a href="{{ path('app_category_edit', {'id': category.id}) }}" class="btn btn-secondary">Edit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="no-records">No records found</p>
+    {% endif %}
+
+
 {% endblock %}
