@@ -11,6 +11,7 @@
         "doctrine/doctrine-bundle": "^2.11",
         "doctrine/doctrine-migrations-bundle": "^3.3",
         "doctrine/orm": "^2.17",
+        "easycorp/easyadmin-bundle": "^4",
         "guzzlehttp/guzzle": "^7.8",
         "stof/doctrine-extensions-bundle": "^1.10",
         "symfony/console": "7.0.*",

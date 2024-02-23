@@ -27,6 +27,9 @@ class Category
     #[ORM\Column]
     private ?\DateTimeImmutable $feed_last_updated_at = null;
 
+    #[ORM\Column(length: 255, options: ['default' => ''])]
+    private ?string $description = '';
+
     public function __construct()
     {
         $this->blogs = new ArrayCollection();
@@ -99,6 +102,18 @@ class Category
     public function setFeedLastUpdatedAt(\DateTimeImmutable $feed_last_updated_at): static
     {
         $this->feed_last_updated_at = $feed_last_updated_at;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): static
+    {
+        $this->description = $description;
 
         return $this;
     }

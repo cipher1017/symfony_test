@@ -10,8 +10,8 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 #[AsCommand(
-    name: 'rss-reader',
-    description: 'Add a short description for your command',
+    name: 'user command',
+    description: 'User Command',
 )]
 class UserCommand extends Command
 {
@@ -34,7 +34,6 @@ class UserCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-
 
 
         return Command::SUCCESS;
