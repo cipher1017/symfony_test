@@ -12,7 +12,7 @@ class HomepageController extends AbstractController
     public function index(): Response
     {
         return $this->render('homepage/index.html.twig', [
-            'controller_name' => 'Ssup!! what next?? Using the Webpack??',
+            'controller_name' => 'Ssup',
         ]);
     }
 }

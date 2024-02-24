@@ -30,14 +30,13 @@
             margin-top: 20px;
             border-radius: 8px;
             border: 1px solid #00b3ff;
-            width: 100px;
+            width: 150px;
         }
     </style>
 {% endblock %}
 
 {% block body %}
-    <h1>Categories</h1>
-    <a href="{{ path('app_category_new') }}" class="create-new btn btn-success">Create New</a>
+    <a href="{{ path('app_category_new') }}" class="create-new btn btn-success">Create New Category</a>
 
     {% if categories %}
         {% for category in categories %}
