@@ -42,7 +42,7 @@
     </head>
     <body>
     <nav class="navbar navbar-expand-lg navbar-custom">
-        <a class="navbar-brand" href="#">Home</a>
+        <a class="navbar-brand" href="{{ path('app_category_index') }}">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -57,7 +57,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contact</a>
                 </li>
-                <li><a href=""><button class="logout_btn">Logout</button></a></li>
+                {% if app.user %}
+                <li><a href="{{ path('app_logout') }}"><button class="logout_btn">Logout</button></a></li>
+                {% else %}
+                <li><a href="{{ path('app_login') }}">Login</a></li>
+                <li><a href="{{ path('app_register') }}">Register</a></li>
+                {% endif %}
             </ul>
         </div>
     </nav>
