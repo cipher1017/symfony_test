@@ -5,6 +5,10 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+{% endblock %}
+
+{% block body %}
     <style>
         body {
             padding: 20px;
@@ -33,10 +37,10 @@
             width: 150px;
         }
     </style>
-{% endblock %}
 
-{% block body %}
+    {% if app.user %}
     <a href="{{ path('app_category_new') }}" class="create-new btn btn-success">Create New Category</a>
+    {% endif %}
 
     {% if categories %}
         {% for category in categories %}

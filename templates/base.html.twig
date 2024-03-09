@@ -19,10 +19,8 @@
                     color: #ffffff; /* white */
                 }
                 button.logout_btn{
-                    padding: 9px 25px;
                     background-color: #006692;
-                    border-radius: 8px;
-                    border: 1px solid #00b3ff;
+
                     cursor: pointer;
                     color: #f2f3f7;
                     text-transform: uppercase;
@@ -60,8 +58,7 @@
                 {% if app.user %}
                 <li><a href="{{ path('app_logout') }}"><button class="logout_btn">Logout</button></a></li>
                 {% else %}
-                <li><a href="{{ path('app_login') }}">Login</a></li>
-                <li><a href="{{ path('app_register') }}">Register</a></li>
+                    <li><a href="{{ path('app_login') }}"><button class="logout_btn">Login</button></a></li>
                 {% endif %}
             </ul>
         </div>

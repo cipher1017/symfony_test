@@ -83,6 +83,7 @@
             <input type="hidden" name="_csrf_token"
                    value="{{ csrf_token('authenticate') }}"
             >
+            <p>Not yet Signed Up? <a href="{{ path('app_register') }}">Create Account</a></p>
 
             <button class="btn btn-lg btn-primary" type="submit">
                 Sign in
