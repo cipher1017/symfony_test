@@ -4,38 +4,11 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
-            <style>
-                .navbar-custom {
-                    background-color: #007bff; /* blue */
-                }
-                .navbar-custom .navbar-brand,
-                .navbar-custom .navbar-text {
-                    color: #ffffff; /* white */
-                }
-                .navbar-custom .navbar-nav .nav-link {
-                    color: #ffffff; /* white */
-                }
-                .navbar-custom .nav-item.active .nav-link {
-                    color: #ffffff; /* white */
-                }
-                button.logout_btn{
-                    background-color: #006692;
-
-                    cursor: pointer;
-                    color: #f2f3f7;
-                    text-transform: uppercase;
-                    font-weight: 600;
-                    letter-spacing: 1px;
-                    transition: all 0.3s ease;
-                }
-                button.logout_btn:hover{
-                    color: #006692;
-                    background-color: #f2f3f7;
-                }
-            </style>
+            <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
         {% endblock %}
 
         {% block javascripts %}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
     <body>
