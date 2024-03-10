@@ -6,9 +6,6 @@
     {{ parent() }}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-{% endblock %}
-
-{% block body %}
     <style>
         body {
             padding: 20px;
@@ -38,13 +35,18 @@
         }
     </style>
 
+{% endblock %}
+
+{% block body %}
+
+
     {% if app.user %}
     <a href="{{ path('app_category_new') }}" class="create-new btn btn-success">Create New Category</a>
     {% endif %}
+    <div class="body-wrapper">
 
     {% if categories %}
         {% for category in categories %}
-            <div class="body-wrapper">
                 <div class="card">
                     <div class="card-body">
                         <p>{{ category.name }}</p>
